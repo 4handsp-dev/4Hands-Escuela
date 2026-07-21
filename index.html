@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4Hands Partners · Escuela de Formación</title>
+<meta name="description" content="Escuela de Formación 4Hands Partners — Programas de formación en ética, transparencia y buen gobierno para Entidades sin Ánimo de Lucro en Colombia.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gotu&family=DM+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* ===================== Tokens ===================== */
+:root {
+  --morazul:   #093E5E;
+  --morazul-2: #062a40;
+  --morazul-3: #04202f;
+  --naranja:   #F18446;
+  --naranja-2: #e26f34;
+  --gold:      #FEDB9B;
+  --tofu:      #FEF0C4;
+  --cream:     #FBF3E4;
+  --lago:      #BED4CF;
+  --gris:      #4B4B4C;
+  --noche:     #1c1c1c;
+  --onix:      #8B8B8C;
+  --plata:     #F1F1F1;
+
+  --ink:    #1c1c1c;
+  --muted:  #5a5a5b;
+  --paper:  #FBF3E4;
+  --paper-2:#FFFDF7;
+
+  --font-title: 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-sub:   'Gotu', 'DM Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-body:  'DM Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+
+  --maxw:     1140px;
+  --radius:   18px;
+  --radius-sm:12px;
+  --radius-xs:8px;
+
+  --shadow-sm:  0 1px 2px rgba(9,62,94,.05), 0 3px 10px rgba(9,62,94,.06);
+  --shadow-md:  0 10px 30px -8px rgba(9,62,94,.18);
+  --shadow-navy:0 22px 48px -16px rgba(4,32,47,.55);
+  --ring-focus: 0 0 0 3px rgba(241,132,70,.45);
+}
+
+/* ===================== Reset ===================== */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background: var(--paper);
+  line-height: 1.62;
+  font-size: 17px;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img  { max-width: 100%; display: block; }
+a    { color: inherit; }
+h1, h2, h3, h4 {
+  margin: 0;
+  font-family: var(--font-title);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: .04em;
+  color: var(--morazul);
+}
+p { margin: 0 0 1rem; }
+
+/* ===================== Layout ===================== */
+.wrap    { max-width: var(--maxw); margin: 0 auto; padding: 0 clamp(18px,4vw,40px); }
+.section { padding: clamp(56px,8vw,96px) 0; }
+
+/* ===================== Utilities ===================== */
+.eyebrow {
+  font-family: var(--font-sub);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-size: .74rem;
+  font-weight: 400;
+  color: var(--naranja);
+  display: inline-flex;
+  align-items: center;
+  gap: .55em;
+  margin: 0 0 .9rem;
+}
+.eyebrow .rule { width: 26px; height: 2px; background: var(--naranja); display: inline-block; border-radius: 2px; }
+
+.btn {
+  --bg: var(--naranja); --fg: #06263a; --bd: transparent;
+  display: inline-flex; align-items: center; gap: .5em;
+  background: var(--bg); color: var(--fg);
+  border: 1.5px solid var(--bd);
+  padding: .72em 1.25em; border-radius: 999px;
+  font-weight: 700; font-size: .98rem; letter-spacing: .005em;
+  cursor: pointer; text-decoration: none;
+  transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+  box-shadow: var(--shadow-sm);
+}
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow-md); }
+.btn.primary:hover { background: var(--naranja-2); }
+.btn.ghost  { --bg: transparent; --fg: var(--cream); --bd: rgba(255,255,255,.28); box-shadow: none; }
+.btn.ghost:hover { background: rgba(255,255,255,.08); --bd: rgba(255,255,255,.5); }
+
+/* ===================== Header ===================== */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: color-mix(in srgb, var(--morazul) 92%, transparent);
+  backdrop-filter: saturate(140%) blur(8px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav {
+  display: flex; align-items: center; gap: 18px; height: 66px;
+}
+.brand {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; flex: none;
+}
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 9px;
+  background: var(--naranja);
+  display: flex; align-items: center; justify-content: center;
+  flex: none;
+}
+.brand-mark svg { width: 22px; height: 22px; fill: #06263a; }
+.brand-name {
+  display: flex; flex-direction: column; line-height: 1.15;
+}
+.brand-name .b1 {
+  font-family: var(--font-title); font-weight: 800; font-size: .98rem;
+  color: #fff; letter-spacing: .04em;
+}
+.brand-name .b2 {
+  font-family: var(--font-sub); font-size: .7rem;
+  color: var(--gold); letter-spacing: .1em; text-transform: uppercase;
+}
+.nav-spacer { flex: 1; }
+.nav-badge {
+  font-family: var(--font-sub);
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px; padding: .35em .75em;
+}
+
+/* ===================== Hero ===================== */
+.hero {
+  position: relative; background: var(--morazul); color: #eaf1f5; overflow: hidden;
+}
+.hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(120% 90% at 88% -10%, rgba(241,132,70,.22), transparent 55%),
+    radial-gradient(90%  80% at 0%  110%, rgba(190,212,207,.14), transparent 60%);
+  pointer-events: none;
+}
+/* decorative grid */
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none; overflow: hidden;
+}
+.hero-grid svg { width: 100%; height: 100%; opacity: .07; }
+
+.hero-inner {
+  position: relative;
+  padding: clamp(52px,8vw,96px) 0 clamp(60px,9vw,108px);
+}
+.hero .eyebrow { color: var(--gold); }
+.hero .eyebrow .rule { background: var(--gold); }
+.hero h1 {
+  color: #fff;
+  font-size: clamp(2.1rem,5.2vw,3.7rem);
+  line-height: 1.1; letter-spacing: .03em;
+  max-width: 22ch; margin-top: .3em;
+}
+.hero h1 .hl { color: var(--gold); }
+.hero-lead {
+  max-width: 54ch; color: rgba(234,241,245,.88);
+  font-size: clamp(1rem,1.5vw,1.15rem); margin-top: 1.3rem;
+  font-family: var(--font-sub);
+}
+.hero-stats {
+  display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2rem;
+}
+.stat {
+  display: flex; align-items: center; gap: .55em;
+  background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.14);
+  border-radius: 12px; padding: .6em .9em; font-size: .9rem; color: #eaf1f5;
+}
+.stat svg { width: 1.1em; height: 1.1em; flex: none; stroke: var(--gold); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ===================== Courses grid ===================== */
+.courses-section { background: var(--paper); }
+.head { max-width: 720px; margin-bottom: clamp(32px,5vw,52px); }
+.head h2 { font-size: clamp(1.7rem,3.4vw,2.5rem); letter-spacing: .04em; }
+.head .lead { font-size: clamp(1rem,1.5vw,1.1rem); color: var(--muted); margin-top: .85rem; font-family: var(--font-sub); }
+
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+/* Course card */
+.course-card {
+  background: var(--paper-2);
+  border: 1.5px solid rgba(9,62,94,.1);
+  border-radius: var(--radius);
+  display: flex; flex-direction: column;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  text-decoration: none; color: inherit;
+}
+.course-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(241,132,70,.35);
+}
+.course-card:focus-visible { outline: none; box-shadow: var(--ring-focus); }
+
+.card-top {
+  background: linear-gradient(135deg, var(--morazul) 0%, #0f5478 100%);
+  padding: 22px 22px 18px;
+  position: relative; overflow: hidden; min-height: 120px;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.card-top::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(70% 70% at 90% 10%, rgba(241,132,70,.2), transparent 60%);
+}
+.card-top-badge {
+  position: relative; z-index: 1;
+  display: inline-flex; align-items: center; gap: .45em;
+  background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.18);
+  color: var(--gold); font-family: var(--font-sub);
+  font-size: .72rem; letter-spacing: .12em; text-transform: uppercase;
+  border-radius: 8px; padding: .3em .65em;
+  margin-bottom: 10px;
+  width: fit-content;
+}
+.card-top h3 {
+  position: relative; z-index: 1;
+  color: #fff; font-size: 1.08rem; letter-spacing: .025em; line-height: 1.3;
+}
+
+.card-body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; gap: 12px; }
+.card-desc { font-size: .93rem; color: var(--muted); line-height: 1.55; flex: 1; }
+.card-meta {
+  display: flex; flex-wrap: wrap; gap: 8px;
+}
+.card-tag {
+  font-family: var(--font-sub);
+  font-size: .72rem; letter-spacing: .08em;
+  color: var(--morazul); background: rgba(9,62,94,.07);
+  border-radius: 6px; padding: .28em .6em;
+}
+.card-cta {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-top: 4px;
+}
+.card-cta .link {
+  font-weight: 700; font-size: .9rem; color: var(--naranja);
+  text-decoration: none; display: inline-flex; align-items: center; gap: .35em;
+  transition: gap .15s ease;
+}
+.card-cta .link:hover { gap: .6em; }
+.card-cta .link svg { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Coming-soon card */
+.course-card.soon {
+  border-style: dashed;
+  border-color: rgba(9,62,94,.14);
+  background: rgba(251,243,228,.5);
+  pointer-events: none; opacity: .72;
+}
+.course-card.soon .card-top { background: linear-gradient(135deg, #e0d5c5, #c9beaf); }
+.soon-label {
+  font-family: var(--font-sub); font-size: .8rem; color: var(--onix);
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 8px; display: block;
+}
+
+/* ===================== CTA Banner ===================== */
+.cta-banner {
+  background: var(--morazul);
+  border-radius: var(--radius);
+  padding: clamp(36px,5vw,56px) clamp(24px,4vw,48px);
+  display: flex; flex-wrap: wrap; align-items: center; gap: 24px;
+  margin-top: clamp(40px,6vw,72px);
+  position: relative; overflow: hidden;
+}
+.cta-banner::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(90% 80% at 100% 50%, rgba(241,132,70,.18), transparent 60%);
+  pointer-events: none;
+}
+.cta-text { position: relative; z-index: 1; flex: 1; min-width: 200px; }
+.cta-text h3 { color: #fff; font-size: clamp(1.2rem,2.4vw,1.7rem); }
+.cta-text p  { color: rgba(234,241,245,.78); font-size: .95rem; margin: .5rem 0 0; }
+.cta-actions { position: relative; z-index: 1; display: flex; gap: 12px; flex-wrap: wrap; }
+
+/* ===================== Footer ===================== */
+.site-footer {
+  background: var(--morazul-3);
+  color: rgba(234,241,245,.65);
+  padding: clamp(40px,6vw,64px) 0 clamp(24px,3vw,36px);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr 1fr;
+  gap: 40px;
+}
+.footer-brand .b1 {
+  font-family: var(--font-title); font-weight: 800; font-size: 1.05rem;
+  color: #fff; letter-spacing: .04em;
+}
+.footer-brand .b2 {
+  font-family: var(--font-sub); font-size: .7rem;
+  color: var(--gold); letter-spacing: .1em; text-transform: uppercase;
+  margin-top: 2px; display: block;
+}
+.footer-brand p { font-size: .88rem; margin-top: 12px; max-width: 36ch; line-height: 1.55; }
+.footer-col h4 { color: #fff; font-size: .85rem; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 12px; font-family: var(--font-sub); font-weight: 400; }
+.footer-col ul { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 8px; }
+.footer-col ul a { text-decoration: none; font-size: .88rem; color: rgba(234,241,245,.6); transition: color .15s; }
+.footer-col ul a:hover { color: var(--gold); }
+.footer-bottom {
+  margin-top: clamp(32px,4vw,48px);
+  padding-top: 20px; border-top: 1px solid rgba(255,255,255,.08);
+  display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: space-between;
+  font-size: .83rem;
+}
+
+/* ===================== Responsive ===================== */
+@media (max-width: 768px) {
+  .footer-grid { grid-template-columns: 1fr; gap: 28px; }
+  .nav-badge   { display: none; }
+}
+@media (max-width: 500px) {
+  .hero h1     { max-width: 18ch; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header">
+  <div class="wrap">
+    <nav class="nav">
+      <a class="brand" href="index.html" aria-label="4Hands Partners - inicio">
+        <div class="brand-mark">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <!-- 4H stylized hands icon -->
+            <path d="M12 3C9 3 6.5 5 6 8L5 16h2l1-5h1l-1 5h2l1-8h1l-1 8h2l1-5h1l-1 5h2l-1-8C14.5 5 15 3 12 3z"/>
+          </svg>
+        </div>
+        <div class="brand-name">
+          <span class="b1">4Hands Partners</span>
+          <span class="b2">Escuela de Formación</span>
+        </div>
+      </a>
+      <div class="nav-spacer"></div>
+      <span class="nav-badge">esal · colombia</span>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-grid" aria-hidden="true">
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
+          <path d="M 60 0 L 0 0 0 60" fill="none" stroke="white" stroke-width="1"/>
+        </pattern>
+      </defs>
+      <rect width="100%" height="100%" fill="url(#grid)"/>
+    </svg>
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow"><span class="rule"></span>Formación para el Sector Social</p>
+      <h1>Escuela de Formación<br><span class="hl">4Hands Partners</span></h1>
+      <p class="hero-lead">
+        Programas de formación práctica en ética, transparencia y buen gobierno para Entidades sin Ánimo de Lucro en Colombia.
+      </p>
+      <div class="hero-stats">
+        <div class="stat">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+          Formación continua
+        </div>
+        <div class="stat">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          ESAL Colombia
+        </div>
+        <div class="stat">
+          <svg viewBox="0 0 24 24"><path d="M22 9V7h-2V5a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-2h2v-2h-2v-2h2v-2h-2V9z"/></svg>
+          100% online · en vivo
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COURSES ===== -->
+<section class="section courses-section">
+  <div class="wrap">
+    <div class="head">
+      <p class="eyebrow"><span class="rule"></span>Programas disponibles</p>
+      <h2>Formaciones activas</h2>
+      <p class="lead">Selecciona el programa para acceder a la información completa: módulos, ponentes, fechas y preinscripción.</p>
+    </div>
+
+    <div class="courses-grid">
+
+      <!-- Ciclo Ética y Transparencia S2 2026 -->
+      <a class="course-card" href="Ciclo-etica-transparencia-4hands-S22026.html" aria-label="Abrir Ciclo de Formación en Ética y Transparencia">
+        <div class="card-top">
+          <span class="card-top-badge">
+            <svg style="width:.8em;height:.8em;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Segundo semestre · 2026
+          </span>
+          <h3>Ciclo de Formación en<br>Ética y Transparencia</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Ruta de impacto y confianza para ESAL: seis sesiones que abordan ética institucional, transparencia financiera, rendición de cuentas y gobierno corporativo.</p>
+          <div class="card-meta">
+            <span class="card-tag">ESAL</span>
+            <span class="card-tag">Ética institucional</span>
+            <span class="card-tag">Transparencia</span>
+            <span class="card-tag">Buen gobierno</span>
+          </div>
+          <div class="card-cta">
+            <span class="link">
+              Ver programa
+              <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Placeholder - próximamente -->
+      <div class="course-card soon" aria-hidden="true">
+        <div class="card-top">
+          <span class="card-top-badge">Próximamente</span>
+          <h3>Nuevos programas<br>en camino</h3>
+        </div>
+        <div class="card-body">
+          <p class="card-desc">Estamos preparando nuevos ciclos de formación. Suscríbete para recibir novedades.</p>
+          <span class="soon-label">Disponible próximamente</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA Banner -->
+    <div class="cta-banner">
+      <div class="cta-text">
+        <h3>¿Tu organización quiere formarse?</h3>
+        <p>Escríbenos para conocer los programas disponibles y planes de inscripción grupal.</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn ghost" href="mailto:formacion@4handspartners.com">Contáctanos</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="b1">4Hands Partners</span>
+        <span class="b2">Escuela de Formación</span>
+        <p>Soluciones de conocimiento y formación para fortalecer el sector social colombiano.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Formaciones</h4>
+        <ul>
+          <li><a href="Ciclo-etica-transparencia-4hands-S22026.html">Ética y Transparencia S2 2026</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>4Hands Partners</h4>
+        <ul>
+          <li><a href="https://www.4handspartners.com" target="_blank" rel="noopener noreferrer">Sitio web</a></li>
+          <li><a href="mailto:formacion@4handspartners.com">formacion@4handspartners.com</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 4Hands Partners S.A.S BIC. Todos los derechos reservados.</span>
+      <span>Bogotá, Colombia</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
