@@ -270,6 +270,35 @@ p { margin: 0 0 1rem; }
 .card-cta .link:hover { gap: .6em; }
 .card-cta .link svg { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
 
+/* ===================== QR en tarjeta ===================== */
+.card-qr-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(9,62,94,.1);
+  margin-top: 4px;
+}
+.card-qr {
+  width: 100px; height: 100px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 4px;
+  box-shadow: 0 1px 4px rgba(9,62,94,.12);
+  display: flex; align-items: center; justify-content: center;
+}
+.card-qr canvas,
+.card-qr img { border-radius: 5px; display: block; }
+.card-qr-label {
+  font-family: var(--font-sub);
+  font-size: .68rem;
+  color: var(--onix);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
 /* Coming-soon card */
 .course-card.soon {
   border-style: dashed;
@@ -425,6 +454,10 @@ p { margin: 0 0 1rem; }
               <svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
             </span>
           </div>
+          <div class="card-qr-wrap">
+            <div class="card-qr" id="qr-etica-s22026"></div>
+            <span class="card-qr-label">Escanea para acceder</span>
+          </div>
         </div>
       </a>
 
@@ -486,5 +519,31 @@ p { margin: 0 0 1rem; }
   </div>
 </footer>
 
+<!-- ===== QR CODES ===== -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+(function () {
+  // Map of QR element IDs to their relative URLs
+  var qrMap = [
+    { id: 'qr-etica-s22026', href: 'Ciclo-etica-transparencia-4hands-S22026.html' }
+  ];
+
+  qrMap.forEach(function (item) {
+    var el = document.getElementById(item.id);
+    if (!el) return;
+    // Build absolute URL so the QR works when scanned from any device
+    var base = window.location.href.replace(/\/[^/]*$/, '/');
+    var fullUrl = base + item.href;
+    new QRCode(el, {
+      text: fullUrl,
+      width: 92,
+      height: 92,
+      colorDark: '#093E5E',
+      colorLight: '#ffffff',
+      correctLevel: QRCode.CorrectLevel.M
+    });
+  });
+})();
+</script>
 </body>
 </html>
