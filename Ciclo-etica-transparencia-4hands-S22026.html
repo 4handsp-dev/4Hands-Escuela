@@ -76,6 +76,7 @@ p{margin:0 0 1rem}
 /* utility layout */
 .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,40px)}
 .section{padding:clamp(56px,8vw,104px) 0}
+section[id]{scroll-margin-top:80px}
 .eyebrow{
   font-family:var(--font-sub);
   text-transform:uppercase;
@@ -148,11 +149,11 @@ p{margin:0 0 1rem}
 }
 .site-header .wrap{max-width:1400px}
 .nav .cta-mini{white-space:nowrap}
-.nav{display:flex;align-items:center;gap:18px;height:66px}
+.nav{display:flex;align-items:center;gap:14px;height:66px}
 .brand{display:flex;align-items:center;gap:0;text-decoration:none;flex:none}
 .brand img{height:40px;width:auto;border-radius:8px}
 .brand .bt{display:none}
-.nav-links{display:none;gap:16px;margin-left:8px}
+.nav-links{display:none;gap:14px;margin-left:6px}
 .nav-links a{
   font-family:var(--font-sub);color:rgba(255,255,255,.82);text-decoration:none;
   font-size:.92rem;padding:6px 2px;position:relative;transition:color .15s ease;
@@ -163,7 +164,7 @@ p{margin:0 0 1rem}
 .nav-tools{margin-left:auto;display:flex;align-items:center;gap:8px}
 .nav-tools .toolset{display:flex;gap:6px}
 .nav .cta-mini{display:none}
-@media (max-width:1079px){.toolset .iconbtn span{display:none}.toolset .iconbtn{padding:.5em}}
+@media (max-width:1099px){.toolset .iconbtn span{display:none}.toolset .iconbtn{padding:.5em}}
 
 /* ===================== Hero ===================== */
 .hero{position:relative;background:var(--morazul);color:#eaf1f5;overflow:hidden}
@@ -316,6 +317,39 @@ p{margin:0 0 1rem}
 
 /* ===================== Details ===================== */
 .sec-details{background:var(--paper)}
+
+/* Normative framework */
+.sec-norma{background:var(--paper-2)}
+.norma-grid{display:grid;gap:clamp(22px,3.5vw,40px);grid-template-columns:1fr;margin-top:clamp(30px,4vw,48px);align-items:start}
+.norma-tiers{display:flex;flex-direction:column;gap:14px}
+.tier{
+  display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;
+  background:var(--paper);border:1px solid rgba(9,62,94,.1);border-radius:16px;
+  padding:18px 20px;box-shadow:var(--shadow-sm);position:relative;
+}
+.tier .tnum{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-family:var(--font-title);font-weight:800;font-size:1.05rem;flex:none;letter-spacing:.03em}
+.tier.t1 .tnum{background:var(--naranja);color:#fff}
+.tier.t2 .tnum{background:var(--morazul);color:var(--gold)}
+.tier.t3 .tnum{background:var(--lago);color:var(--morazul)}
+.tier h3{font-family:var(--font-body);font-weight:700;font-size:1.02rem;color:var(--morazul);line-height:1.25}
+.tier p{margin:4px 0 0;font-size:.9rem;color:var(--muted);line-height:1.4}
+.tier .scope{display:inline-block;margin-top:6px;font-family:var(--font-sub);font-size:.76rem;letter-spacing:.04em;text-transform:uppercase;color:var(--naranja)}
+.tier-link{display:flex;justify-content:center;color:var(--onix);margin:-6px 0}
+.tier-link .ic{width:1.3em;height:1.3em}
+.norma-aside{display:flex;flex-direction:column;gap:16px}
+.norma-card{background:var(--morazul);color:#eaf1f5;border-radius:var(--radius);padding:clamp(22px,3vw,30px);box-shadow:var(--shadow-navy)}
+.norma-card h3{color:#fff;font-family:var(--font-sub);font-weight:400;font-size:1.12rem;margin-bottom:12px;display:flex;align-items:center;gap:.5em}
+.norma-card h3 .ic{color:var(--gold)}
+.norma-card ul{list-style:none;padding:0;margin:0;display:grid;gap:11px}
+.norma-card li{display:flex;gap:.7em;align-items:flex-start;font-size:.95rem;color:#eef4f7;line-height:1.45}
+.norma-card li .ic{color:var(--gold);margin-top:.15em;flex:none;width:1.1em;height:1.1em}
+.norma-badge{display:flex;gap:12px;align-items:center;background:var(--tofu);border:1px solid rgba(241,132,70,.3);border-radius:14px;padding:16px 18px}
+.norma-badge .ic{width:1.9em;height:1.9em;color:var(--naranja);flex:none}
+.norma-badge p{margin:0;font-size:.92rem;color:var(--gris);line-height:1.45}
+.norma-badge b{color:var(--morazul)}
+@media (min-width:820px){
+  .norma-grid{grid-template-columns:1.05fr .95fr}
+}
 .detail-grid{display:grid;gap:18px;grid-template-columns:1fr;margin-top:clamp(30px,4vw,48px)}
 .detail{
   background:var(--paper-2);border:1px solid rgba(9,62,94,.09);border-radius:16px;
@@ -465,7 +499,7 @@ html{scroll-behavior:smooth}
   .nav .cta-mini{display:inline-flex}
   .nav .cta-direct{display:none}
 }
-@media (min-width:1240px){
+@media (min-width:1290px){
   .nav .cta-direct{display:inline-flex}
 }
 @media (max-width:819px){
@@ -516,6 +550,7 @@ html{scroll-behavior:smooth}
         <div class="nav-links">
           <a href="#proposito">Propósito</a>
           <a href="#ruta">Ruta</a>
+          <a href="#marco">Marco</a>
           <a href="#detalles">Detalles</a>
           <a href="#equipo">Equipo</a>
         </div>
@@ -794,6 +829,64 @@ html{scroll-behavior:smooth}
     </div>
   </section>
 
+  <!-- Normative framework -->
+  <section class="section sec-norma" id="marco">
+    <div class="wrap">
+      <div class="head reveal">
+        <p class="eyebrow"><span class="rule"></span> Marco normativo</p>
+        <h2>Contenido alineado con el marco regulatorio del PTEE</h2>
+        <p class="lead">El cumplimiento de los Programas de Transparencia y Ética Empresarial (PTEE) para ESAL se rige por una jerarquía de normas de distinto alcance. El ciclo mantiene tu entidad al día con ese marco y su evolución.</p>
+      </div>
+      <div class="norma-grid">
+        <div class="norma-tiers reveal">
+          <div class="tier t1">
+            <span class="tnum">1</span>
+            <div>
+              <h3>Leyes nacionales</h3>
+              <p>Estatuto anticorrupción, transparencia y responsabilidad de personas jurídicas: la base común para todo el país.</p>
+              <span class="scope">Alcance nacional</span>
+            </div>
+          </div>
+          <div class="tier-link" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></div>
+          <div class="tier t2">
+            <span class="tnum">2</span>
+            <div>
+              <h3>Lineamientos y guías del nivel central</h3>
+              <p>Orientaciones y borradores que precisan los lineamientos mínimos para estructurar y adoptar el PTEE.</p>
+              <span class="scope">Reglamentación en evolución</span>
+            </div>
+          </div>
+          <div class="tier-link" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path d="M12 5v14"/><path d="M6 13l6 6 6-6"/></svg></div>
+          <div class="tier t3">
+            <span class="tnum">3</span>
+            <div>
+              <h3>Autoridades de inspección, vigilancia y control</h3>
+              <p>Actos administrativos de entes territoriales y de supervisión que definen exigencias y plazos concretos según cada entidad.</p>
+              <span class="scope">Varía por región y por tipo de ESAL</span>
+            </div>
+          </div>
+        </div>
+        <div class="norma-aside reveal">
+          <div class="norma-card">
+            <h3>
+              <svg class="ic" viewBox="0 0 24 24"><path d="M12 3l7 3v6c0 4-3 7-7 9-4-2-7-5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg>
+              Qué asegura la formación
+            </h3>
+            <ul>
+              <li><svg class="ic" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span>Lectura práctica de la jerarquía normativa: qué aplica de manera general y qué depende de tu jurisdicción.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span>Adaptación del PTEE al alcance y a las exigencias específicas de tu entidad y tu región.</span></li>
+              <li><svg class="ic" viewBox="0 0 24 24"><path d="M4 12l5 5L20 6"/></svg><span>Actualización frente a los cambios y nuevos lineamientos que continúan emitiéndose.</span></li>
+            </ul>
+          </div>
+          <div class="norma-badge">
+            <svg class="ic" viewBox="0 0 24 24"><path d="M4 4v6h6"/><path d="M20 20v-6h-6"/><path d="M20 9A8 8 0 0 0 6 6L4 8"/><path d="M4 15a8 8 0 0 0 14 3l2-2"/></svg>
+            <p><b>Marco vivo:</b> la regulación del PTEE sigue en construcción y no es igual en todas las regiones. El contenido se revisa y actualiza para reflejar el marco vigente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Details -->
   <section class="section sec-details" id="detalles">
     <div class="wrap">
@@ -962,6 +1055,7 @@ html{scroll-behavior:smooth}
           <div class="footer-links" style="flex-direction:column;gap:10px">
             <a href="#proposito">Propósito</a>
             <a href="#ruta">Ruta de formación</a>
+            <a href="#marco">Marco normativo</a>
             <a href="#detalles">Detalles del programa</a>
             <a href="#equipo">Equipo experto</a>
             <a :href="preLink" target="_blank" rel="noopener">Preinscripción</a>
