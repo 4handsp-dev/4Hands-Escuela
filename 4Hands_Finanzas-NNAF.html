@@ -178,9 +178,9 @@ p{margin:0 0 1rem}
 .btn--primary{background:var(--c-orange);color:#fff;box-shadow:0 8px 24px rgba(241,132,70,.34)}
 .btn--primary:hover{background:var(--orange-deep);transform:translateY(-2px);box-shadow:0 12px 30px rgba(241,132,70,.42)}
 .btn--ghost{background:transparent;color:var(--c-blue);border-color:var(--line)}
-.section--dark .btn--ghost,.section--night .btn--ghost{color:#fff;border-color:rgba(255,255,255,.34)}
+.hero .btn--ghost,.section--dark .btn--ghost,.section--night .btn--ghost{color:#fff;border-color:rgba(255,255,255,.34)}
 .btn--ghost:hover{border-color:var(--c-orange);color:var(--orange-deep)}
-.section--dark .btn--ghost:hover,.section--night .btn--ghost:hover{background:rgba(255,255,255,.08);color:#fff;border-color:#fff}
+.hero .btn--ghost:hover,.section--dark .btn--ghost:hover,.section--night .btn--ghost:hover{background:rgba(255,255,255,.08);color:#fff;border-color:#fff}
 .btn--light{background:#fff;color:var(--c-blue)}
 .btn--light:hover{background:var(--c-magic);transform:translateY(-2px)}
 
@@ -226,10 +226,14 @@ p{margin:0 0 1rem}
 .hero .lead{color:#c4d8e6;max-width:560px;margin:22px 0 30px;font-size:clamp(1.04rem,1.5vw,1.2rem)}
 .hero__cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center}
 .hero__note{font-family:var(--f-mono);font-size:.72rem;color:#8fb3c8;letter-spacing:.03em;margin-top:22px;display:flex;align-items:center;gap:8px}
-.hero__stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:46px;border-top:1px solid rgba(255,255,255,.13);padding-top:26px}
+.hero__stats{margin-top:46px;border-top:1px solid rgba(255,255,255,.13);padding-top:26px}
+.hero__lifeskill{display:flex;align-items:center;gap:11px;background:linear-gradient(90deg,rgba(254,219,155,.17),rgba(254,219,155,.05));border:1px solid rgba(254,219,155,.32);border-radius:999px;padding:11px 20px;margin-bottom:22px;color:#eef6fb;font-size:.92rem;line-height:1.35}
+.hero__lifeskill .ic{color:var(--c-magic);width:21px;height:21px;flex:none}
+.hero__lifeskill b{color:var(--c-magic);font-weight:700}
+.hero__stats-nums{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
 .hstat b{font-family:var(--f-display);font-size:clamp(1.6rem,3vw,2.3rem);color:#fff;display:block;line-height:1;letter-spacing:-.02em}
 .hstat span{font-size:.82rem;color:#a9c6d8;display:block;margin-top:8px;line-height:1.4}
-@media(max-width:520px){.hero__stats{grid-template-columns:1fr;gap:16px}}
+@media(max-width:520px){.hero__stats-nums{grid-template-columns:1fr;gap:16px}.hero__lifeskill{font-size:.86rem;align-items:flex-start}}
 
 /* City signature */
 .city{position:relative;width:100%}
@@ -241,6 +245,10 @@ p{margin:0 0 1rem}
 .day-flag{opacity:0;transition:opacity .2s}
 .bldg:hover .day-flag,.bldg.on .day-flag,.bldg:focus-visible .day-flag{opacity:1}
 .city__cap--on{color:var(--c-magic);font-weight:700}
+/* Mensaje del día seleccionado, sobre la base de la ciudad */
+.city-base{opacity:0;transition:opacity .25s ease;pointer-events:none}
+.city-base--on{opacity:1}
+.city-base text{letter-spacing:.01em}
 
 /* ============================================================
    RETO / STATS
@@ -297,6 +305,10 @@ p{margin:0 0 1rem}
 #apuesta .how .ic{color:var(--orange-deep)}
 #apuesta .how h4{color:var(--c-blue)}
 #apuesta .how p{color:var(--c-gris)}
+/* La Ciudad · cierre: competencias + habitantes */
+.citycomp{margin-top:clamp(44px,5.5vw,64px);background:rgba(254,219,155,.08);border:1px solid rgba(254,219,155,.22);border-left:4px solid var(--c-magic);border-radius:16px;padding:20px 24px;color:#c4d8e6;font-size:1.04rem;line-height:1.55;max-width:880px}
+.citycomp b{color:var(--c-magic);font-weight:700}
+.inhab-role{display:block;font-family:var(--f-mono);font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;color:var(--c-magic);margin-bottom:5px}
 
 /* Competencias saber/hacer/ser */
 .comp3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
@@ -556,7 +568,7 @@ p{margin:0 0 1rem}
   .toolbar,.progress,.no-print,.hero__cta,.aud-tabs,.loader__tabs,.loader__actions,.dropzone,.ta,.nav,.contact-row .no-print{display:none !important}
   .section{padding:16px 0 !important;page-break-inside:avoid}
   .hero{background:#fff !important;color:#222 !important;padding:0 0 10px !important}
-  .hero h1,.hero .lead,.hstat b,.hstat span{color:#222 !important}
+  .hero h1,.hero .lead,.hstat b,.hstat span,.hero__lifeskill{color:#222 !important}
   .section--dark,.section--night,.section--sage,.section--tofu,.section--plata{background:#fff !important;color:#222 !important}
   .section--dark h1,.section--dark h2,.section--dark h3,.section--night h1,.section--night h2,.section--night h3{color:#093E5E !important}
   h1,h2,h3,h4{color:#093E5E !important}
@@ -1124,8 +1136,8 @@ strong{font-family:var(--f-strong);font-weight:700}
     <div class="hero__grid">
       <div>
         <span class="hero__badge"><svg class="ic" style="width:15px;height:15px"><use href="#ic-leaf"/></svg> <b>4Hands Partners S.A.S BIC</b> · Desarrollo sostenible: consciente y ético</span>
-        <h1>No enseñamos sobre dinero.<br><span class="ln2">Construimos la economía donde los niños aprenden a vivir y a transformar su futuro.</span></h1>
-        <p class="lead">Educación económica y financiera para niños, niñas, adolescentes y sus familias. Una estrategia experiencial que transforma la conciencia, el comportamiento y las decisiones desde edades tempranas, y las convierte en autonomía para toda la vida.</p>
+        <h1>No enseñamos sobre dinero.<br><span class="ln2">Construimos autonomía financiera y estabilidad económica para acompañar proyectos de vida.</span></h1>
+        <p class="lead">Educación económica y financiera para niños, niñas, adolescentes y sus familias. Una estrategia inspiradora y experiencial que transforma la conciencia, el comportamiento y las decisiones desde edades tempranas, y las convierte en autonomía para toda la vida.</p>
         <div class="hero__cta">
           <a href="#ciudad" class="btn btn--primary"><svg class="ic"><use href="#ic-spark"/></svg> Conocer «La Ciudad»</a>
           <a href="#formatos" class="btn btn--ghost">Ver formatos</a>
@@ -1153,14 +1165,14 @@ strong{font-family:var(--f-strong);font-weight:700}
           <g><rect x="492" y="332" width="7" height="26" rx="3" fill="#0b3a58"/><circle cx="495.5" cy="326" r="13" fill="#BED4CF"/></g>
 
           <!-- DÍA 1 -->
-          <g class="bldg" :class="{on: diaHover===1}" @mouseenter="diaHover=1" @mouseleave="diaHover=0" @click="diaHover = diaHover===1 ? 0 : 1" tabindex="0" role="button" aria-label="Día 1">
+          <g class="bldg" :class="{on: diaHover===1 || diaSel===1}" @mouseenter="diaHover=1" @mouseleave="diaHover=0" @click="diaSel = diaSel===1 ? 0 : 1" @keydown.enter="diaSel = diaSel===1 ? 0 : 1" tabindex="0" role="button" aria-label="Día 1: El poder del dinero">
             <g class="day-flag"><rect x="34" y="248" width="66" height="20" rx="10" fill="#F18446"/><text x="67" y="262" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#fff">DÍA 1</text></g>
             <rect x="40" y="288" width="54" height="68" rx="6" fill="#FEDB9B"/>
             <rect x="40" y="288" width="54" height="12" rx="6" fill="#F18446"/>
             <g fill="#093E5E" opacity=".8"><rect x="50" y="308" width="12" height="12" rx="2"/><rect x="72" y="308" width="12" height="12" rx="2"/><rect x="50" y="328" width="12" height="12" rx="2"/><rect x="72" y="328" width="12" height="12" rx="2"/></g>
           </g>
           <!-- DÍA 2 · banco -->
-          <g class="bldg" :class="{on: diaHover===2}" @mouseenter="diaHover=2" @mouseleave="diaHover=0" @click="diaHover = diaHover===2 ? 0 : 2" tabindex="0" role="button" aria-label="Día 2">
+          <g class="bldg" :class="{on: diaHover===2 || diaSel===2}" @mouseenter="diaHover=2" @mouseleave="diaHover=0" @click="diaSel = diaSel===2 ? 0 : 2" @keydown.enter="diaSel = diaSel===2 ? 0 : 2" tabindex="0" role="button" aria-label="Día 2: Fundamos la ciudad">
             <g class="day-flag"><rect x="104" y="212" width="66" height="20" rx="10" fill="#F18446"/><text x="137" y="226" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#fff">DÍA 2</text></g>
             <rect x="108" y="252" width="66" height="104" rx="6" fill="#F1F1F1"/>
             <path d="M108 252l33-16 33 16z" fill="#093E5E"/>
@@ -1169,14 +1181,14 @@ strong{font-family:var(--f-strong);font-weight:700}
             <text x="141" y="290" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="13" font-weight="700" fill="#093E5E">$</text>
           </g>
           <!-- DÍA 3 -->
-          <g class="bldg" :class="{on: diaHover===3}" @mouseenter="diaHover=3" @mouseleave="diaHover=0" @click="diaHover = diaHover===3 ? 0 : 3" tabindex="0" role="button" aria-label="Día 3">
+          <g class="bldg" :class="{on: diaHover===3 || diaSel===3}" @mouseenter="diaHover=3" @mouseleave="diaHover=0" @click="diaSel = diaSel===3 ? 0 : 3" @keydown.enter="diaSel = diaSel===3 ? 0 : 3" tabindex="0" role="button" aria-label="Día 3: Invertimos en el futuro">
             <g class="day-flag"><rect x="188" y="168" width="66" height="20" rx="10" fill="#F18446"/><text x="221" y="182" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#fff">DÍA 3</text></g>
             <rect x="192" y="206" width="58" height="150" rx="6" fill="#093E5E"/>
             <rect x="192" y="206" width="58" height="12" rx="6" fill="#F18446"/>
             <g fill="#FEDB9B"><rect x="202" y="226" width="12" height="14" rx="2"/><rect x="228" y="226" width="12" height="14" rx="2"/><rect x="202" y="250" width="12" height="14" rx="2"/><rect x="228" y="250" width="12" height="14" rx="2"/><rect x="202" y="274" width="12" height="14" rx="2"/><rect x="228" y="274" width="12" height="14" rx="2"/><rect x="215" y="316" width="12" height="40" rx="2" fill="#F18446"/></g>
           </g>
           <!-- DÍA 4 -->
-          <g class="bldg" :class="{on: diaHover===4}" @mouseenter="diaHover=4" @mouseleave="diaHover=0" @click="diaHover = diaHover===4 ? 0 : 4" tabindex="0" role="button" aria-label="Día 4">
+          <g class="bldg" :class="{on: diaHover===4 || diaSel===4}" @mouseenter="diaHover=4" @mouseleave="diaHover=0" @click="diaSel = diaSel===4 ? 0 : 4" @keydown.enter="diaSel = diaSel===4 ? 0 : 4" tabindex="0" role="button" aria-label="Día 4: Ciudad solidaria">
             <g class="day-flag"><rect x="268" y="196" width="66" height="20" rx="10" fill="#F18446"/><text x="301" y="210" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#fff">DÍA 4</text></g>
             <rect x="272" y="236" width="60" height="120" rx="6" fill="#BED4CF"/>
             <path d="M272 236h60l-8-16h-44z" fill="#093E5E"/>
@@ -1185,7 +1197,7 @@ strong{font-family:var(--f-strong);font-weight:700}
             <path d="M283 300h38" stroke="#fff" stroke-width="3"/>
           </g>
           <!-- DÍA 5 -->
-          <g class="bldg" :class="{on: diaHover===5}" @mouseenter="diaHover=5" @mouseleave="diaHover=0" @click="diaHover = diaHover===5 ? 0 : 5" tabindex="0" role="button" aria-label="Día 5">
+          <g class="bldg" :class="{on: diaHover===5 || diaSel===5}" @mouseenter="diaHover=5" @mouseleave="diaHover=0" @click="diaSel = diaSel===5 ? 0 : 5" @keydown.enter="diaSel = diaSel===5 ? 0 : 5" tabindex="0" role="button" aria-label="Día 5: Nuestra economía">
             <g class="day-flag"><rect x="352" y="150" width="66" height="20" rx="10" fill="#F18446"/><text x="385" y="164" text-anchor="middle" font-family="JetBrains Mono,monospace" font-size="11" font-weight="700" fill="#fff">DÍA 5</text></g>
             <rect x="356" y="190" width="64" height="166" rx="6" fill="#F18446"/>
             <rect x="356" y="190" width="64" height="12" rx="6" fill="#093E5E"/>
@@ -1195,14 +1207,21 @@ strong{font-family:var(--f-strong);font-weight:700}
           </g>
           <!-- persona -->
           <g transform="translate(440,318)"><circle cx="0" cy="0" r="9" fill="#FEDB9B"/><rect x="-8" y="10" width="16" height="26" rx="8" fill="#F18446"/></g>
+          <!-- Mensaje del día seleccionado, sobre la base de la ciudad -->
+          <g class="city-base" :class="{'city-base--on': diaSel}" aria-hidden="true">
+            <rect x="40" y="372" width="440" height="40" rx="20" fill="#F18446"/>
+            <text x="260" y="399" text-anchor="middle" fill="#fff" font-family="'Satoshi','Sora',sans-serif" font-size="20" font-weight="700">{{ diaSelLabel }}</text>
+          </g>
         </svg>
-        <p class="city__cap" :class="{'city__cap--on': diaHover}">{{ diaCaption }}</p>
+        <p class="city__cap">Toca cada edificio · 5 días, una economía completa</p>
       </div>
     </div>
     <div class="hero__stats">
-      <div class="hstat"><b>4–15+</b><span>Años: primera infancia, niñez, adolescencia y juventud</span></div>
-      <div class="hstat"><b>9 + 5</b><span>Temas esenciales y competencias transversales para la vida</span></div>
-      <div class="hstat"><b>3 públicos</b><span>Niños y jóvenes, familias y agentes educativos</span></div>
+      <div class="hero__lifeskill"><svg class="ic"><use href="#ic-compass"/></svg><span>Competencias <b>esenciales y transversales</b> para la vida</span></div>
+      <div class="hero__stats-nums">
+        <div class="hstat"><b>4–15+</b><span>Años: primera infancia, niñez, adolescencia y juventud</span></div>
+        <div class="hstat"><b>3 públicos</b><span>Niños y jóvenes, familias y agentes educativos</span></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1212,24 +1231,39 @@ strong{font-family:var(--f-strong);font-weight:700}
   <div class="wrap">
     <div class="section-head">
       <span class="eyebrow">El reto</span>
-      <h2 class="h-lg">Manejarán dinero toda la vida. Casi nadie les enseña a hacerlo.</h2>
-      <p class="lead">Los hábitos financieros se forman en la infancia y son difíciles de corregir después. En Colombia, la brecha no es solo de conocimiento: es de contexto.</p>
+      <h2 class="h-lg">Manejaremos dinero toda la vida. Casi nadie nos enseña a hacerlo.</h2>
+      <p class="lead">Nuestros hábitos financieros se forman en la infancia y son difíciles de corregir después. En Colombia, la brecha no es solo de conocimiento: es de contexto.</p>
     </div>
     <div class="grid g-3">
       <div class="bigstat reveal">
         <b>51%</b>
         <p>de los estudiantes en Colombia no encuentran educación financiera en su currículo escolar.</p>
-        <cite>OCDE · Marco legal EEF</cite>
+        <cite>CONPES 4005 (OCDE/PISA 2014) · Marco legal EEF</cite>
+      </div>
+      <div class="bigstat reveal">
+        <b>64%</b>
+        <p>de la población planifica para menos de un mes o no tiene ningún plan financiero.</p>
+        <cite>Banco Mundial, 2013 · ENEEF</cite>
       </div>
       <div class="bigstat reveal">
         <b>3–5</b>
-        <p>años: la edad en que ya se forman los hábitos financieros básicos, difíciles de cambiar luego.</p>
+        <p>años: la edad en que ya se forman los hábitos financieros básicos, difíciles de corregir después.</p>
         <cite>Banco de España, 2025</cite>
       </div>
       <div class="bigstat reveal">
+        <b>0,7%</b>
+        <p>de los datáfonos del país está en zonas rurales, que concentran cerca de un tercio de la población beneficiaria de programas sociales.</p>
+        <cite>CONPES 4005 · Marco legal EEF</cite>
+      </div>
+      <div class="bigstat reveal">
         <b>48%</b>
-        <p>de los programas de educación financiera no formal nunca midieron su impacto.</p>
+        <p>de los programas de educación financiera no formal no contaban con mecanismos para evaluar sus resultados.</p>
         <cite>Banco de la República, 2018</cite>
+      </div>
+      <div class="bigstat reveal">
+        <b>30/100</b>
+        <p>de cada 100 niños que entran a preescolar, solo 30 se gradúan de bachiller y 20 acceden a educación superior.</p>
+        <cite>PND 2022–2026 · DNP</cite>
       </div>
     </div>
   </div>
@@ -1240,23 +1274,54 @@ strong{font-family:var(--f-strong);font-weight:700}
   <div class="wrap">
     <div class="value-hero reveal">
       <span class="eyebrow">Nuestra apuesta</span>
-      <p class="value-quote">No enseñamos <span class="accent">sobre</span> dinero: acompañamos a construir <span class="accent">autonomía financiera</span> para toda la vida, transformando la conciencia, el comportamiento y las decisiones desde edades tempranas.</p>
+      <p class="value-quote">No enseñamos <span class="accent">sobre</span> dinero: Acompañamos a las personas a construir su <span class="accent">autonomía financiera</span> y su <span class="accent">estabilidad económica</span> para su proyecto de vida, transformando la conciencia, el comportamiento y las decisiones desde edades tempranas, a través de estrategias de educación inspiradoras y experienciales.</p>
     </div>
-    <div class="howitworks" style="margin-top:clamp(36px,4.5vw,56px)">
-      <div class="how reveal">
-        <svg class="ic"><use href="#ic-spark"/></svg>
-        <h4>Experiencia, no cátedra</h4>
-        <p>Los niños no estudian la economía: la habitan, la trabajan y la gobiernan.</p>
+    <div class="section-head" style="margin-top:clamp(40px,5vw,64px)">
+      <h3 class="h-md">Cambiar el comportamiento, no solo informar</h3>
+      <p class="lead">Decisiones metodológicas que nos separan de la formación financiera tradicional.</p>
+    </div>
+    <div class="grid g-2">
+      <div class="pillar reveal">
+        <div class="pillar__n">1</div>
+        <div>
+          <h4 class="sub">Aprendizaje experiencial</h4>
+          <p>No estudiamos la economía: la habitamos. Fundamos y administramos una ciudad con ingresos, impuestos, crédito, inversión e imprevistos. El aprendizaje ocurre viviendo.</p>
+        </div>
       </div>
-      <div class="how reveal">
-        <svg class="ic"><use href="#ic-groups"/></svg>
-        <h4>Todo el ecosistema</h4>
-        <p>Niñas, niños y adolescentes, sus familias y sus docentes. El cambio se sostiene en casa y en el aula.</p>
+      <div class="pillar reveal">
+        <div class="pillar__n">2</div>
+        <div>
+          <h4 class="sub">Todo el ecosistema</h4>
+          <p>No solo NNA. Formamos también a familias y agentes educativos, porque los niños aprenden finanzas imitando a los adultos que los rodean. El cambio se construye y perdura desde la casa y el aula. Con herramientas de seguimiento en el presente y el largo plazo, para que las instituciones y el sistema puedan medir si vamos bien.</p>
+        </div>
       </div>
-      <div class="how reveal">
-        <svg class="ic"><use href="#ic-insights"/></svg>
-        <h4>Impacto que se mide</h4>
-        <p>No medimos cuánto memorizan, sino cómo deciden. Con líneas base y medición pre–post.</p>
+      <div class="pillar reveal">
+        <div class="pillar__n">3</div>
+        <div>
+          <h4 class="sub">Contexto primero</h4>
+          <p>Cada estrategia se diseña tras un perfilamiento profundo: edad, nivel socioeconómico, ruralidad o ciudad, saberes previos. Nada genérico; todo pertinente.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__n">4</div>
+        <div>
+          <h4 class="sub">Comportamiento y proyecto de vida</h4>
+          <p>No medimos cuánto memorizan, sino cómo deciden. Autoconocimiento, inteligencia emocional financiera, autonomía económica y toma de decisiones para su proyecto de vida.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__n">5</div>
+        <div>
+          <h4 class="sub">Impacto que se mide</h4>
+          <p>Rúbricas de competencias, líneas base y medición pre–post. Cerramos la brecha de los programas que se ejecutan pero nunca se evalúan.</p>
+        </div>
+      </div>
+      <div class="pillar reveal">
+        <div class="pillar__n">6</div>
+        <div>
+          <h4 class="sub">Empresa BIC, propósito real</h4>
+          <p>En 4Hands Partners S.A.S BIC el impacto sostenible no es mercadeo: es nuestro objeto social. Cada intervención aporta a los ODS y al desarrollo económico de las familias.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -1268,14 +1333,14 @@ strong{font-family:var(--f-strong);font-weight:700}
     <div class="section-head">
       <span class="eyebrow eyebrow--light">Metodología insignia</span>
       <h2 class="h-lg">La Ciudad: una economía viva de cinco días</h2>
-      <p class="lead" style="color:#c4d8e6">Un aula se transforma en una ciudad con banco, negocios, cajero, impuestos, crédito e imprevistos. Los participantes aprenden decidiendo, con consecuencias reales dentro del juego.</p>
+      <p class="lead" style="color:#c4d8e6">Un aula se transforma en una ciudad. No estudiamos la economía: la fundamos, la trabajamos y la gobernamos. Aprendemos decidiendo, con consecuencias reales dentro del juego.</p>
     </div>
 
     <div class="howitworks">
       <div class="how reveal">
         <svg class="ic"><use href="#ic-spark"/></svg>
         <h4>Inmersión total</h4>
-        <p>Una ciudad viva con banco, negocios, cajero, impuestos y eventos inesperados.</p>
+        <p>Una ciudad viva con banco, negocios, cajero, impuestos, crédito, inversión y eventos inesperados.</p>
       </div>
       <div class="how reveal">
         <svg class="ic"><use href="#ic-target"/></svg>
@@ -1285,12 +1350,12 @@ strong{font-family:var(--f-strong);font-weight:700}
       <div class="how reveal">
         <svg class="ic"><use href="#ic-groups"/></svg>
         <h4>Cooperación entre edades</h4>
-        <p>Grupos mixtos donde los mayores guían a los pequeños. Se colabora, no se compite.</p>
+        <p>Grupos mixtos donde los mayores guían a los pequeños. Colaboramos, no competimos.</p>
       </div>
       <div class="how reveal">
         <svg class="ic"><use href="#ic-compass"/></svg>
         <h4>Metas de vida</h4>
-        <p>Cada niño persigue una meta y descubre que planear y ahorrar la hacen posible.</p>
+        <p>Perseguimos una meta y descubrimos que planear y ahorrar la hacen posible.</p>
       </div>
     </div>
 
@@ -1327,6 +1392,31 @@ strong{font-family:var(--f-strong);font-weight:700}
         <div class="day__bar"></div>
       </div>
     </div>
+
+    <div class="citycomp reveal"><b>Saber, saber hacer y saber ser.</b> Cada experiencia desarrolla tres dimensiones de competencia, que a su vez son la base de nuestra medición de impacto.</div>
+
+    <div class="section-head" style="margin-top:clamp(44px,5.5vw,64px)">
+      <span class="eyebrow eyebrow--light">Público objetivo</span>
+      <h3 class="h-md" style="color:#fff">¿Quiénes habitan la ciudad?</h3>
+      <p class="lead" style="color:#c4d8e6">Una ciudad no funciona con un solo tipo de habitante. Por eso la formación puede llegar a tres grupos que aprenden a la vez y se sostienen entre sí.</p>
+    </div>
+    <div class="grid g-3">
+      <div class="how reveal">
+        <svg class="ic"><use href="#ic-groups"/></svg>
+        <span class="inhab-role">Protagonistas</span>
+        <h4>Niñas, niños y adolescentes</h4>
+      </div>
+      <div class="how reveal">
+        <svg class="ic"><use href="#ic-family"/></svg>
+        <span class="inhab-role">Corresponsables</span>
+        <h4>Familias y cuidadores</h4>
+      </div>
+      <div class="how reveal">
+        <svg class="ic"><use href="#ic-school"/></svg>
+        <span class="inhab-role">Multiplicadores</span>
+        <h4>Agentes educativos</h4>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1336,7 +1426,7 @@ strong{font-family:var(--f-strong);font-weight:700}
     <div class="section-head">
       <span class="eyebrow">Ideas que se llevan</span>
       <h2 class="h-lg">Cuatro aprendizajes que quedan</h2>
-      <p class="lead">Más allá de los contenidos, la ciudad deja instaladas cuatro nociones que ordenan cualquier decisión económica futura.</p>
+      <p class="lead">Más allá de los contenidos, la ciudad nos deja instaladas cuatro nociones que ordenan cualquier decisión económica que tomemos.</p>
     </div>
     <div class="concept-strip" style="margin-top:0">
       <div class="concept reveal">
@@ -1376,13 +1466,13 @@ strong{font-family:var(--f-strong);font-weight:700}
         <div class="fmt__top"><div class="fmt__ic"><svg class="ic"><use href="#ic-play"/></svg></div></div>
         <h4>Conferencia inspiradora</h4>
         <p class="fmt__sub">1 a 2 horas</p>
-        <p>Alto impacto para abrir la conversación sobre finanzas en colegios, familias o empresas.</p>
+        <p>Alto impacto para abrir la conversación sobre finanzas en instituciones educativas, familias o empresas.</p>
       </div>
       <div class="fmt reveal">
         <div class="fmt__top"><div class="fmt__ic"><svg class="ic"><use href="#ic-bolt"/></svg></div></div>
         <h4>Un día financiero</h4>
         <p class="fmt__sub">Mínimo 2 horas</p>
-        <p>Una experiencia sobre un tema elegido, adaptada al contexto y la edad.</p>
+        <p>Una experiencia pedagógica sobre un tema elegido, adaptada al contexto y la edad.</p>
       </div>
       <div class="fmt reveal">
         <div class="fmt__top"><div class="fmt__ic"><svg class="ic"><use href="#ic-layers"/></svg></div></div>
@@ -1484,13 +1574,13 @@ strong{font-family:var(--f-strong);font-weight:700}
     <div class="section-head center">
       <span class="eyebrow">Por qué confiar</span>
       <h2 class="h-lg">Rigor, propósito e impacto que se mide</h2>
-      <p class="lead">No improvisamos: fundamentamos. Cada intervención se apoya en el marco normativo y en un propósito de impacto real.</p>
+      <p class="lead">No improvisamos: fundamentamos. Cada intervención se apoya en buenas prácticas y en un propósito de impacto real.</p>
     </div>
     <div class="grid g-4">
       <div class="topic reveal">
         <svg class="ic"><use href="#ic-gavel"/></svg>
         <b>Marco normativo</b>
-        <p>Alineados con el CONPES 4005, la Ley 115 y el Documento 26 del MEN.</p>
+        <p>Alineados con el CONPES 4005, la Ley 115, el Documento 26 del MEN y otros relevantes.</p>
       </div>
       <div class="topic reveal">
         <svg class="ic"><use href="#ic-leaf"/></svg>
@@ -1549,8 +1639,7 @@ strong{font-family:var(--f-strong);font-weight:700}
       <div>
         <h5>Rigor e impacto</h5>
         <a href="#respaldo">Medición de impacto</a>
-        <a href="#respaldo">Marco legal</a>
-        <a href="#respaldo">Antecedentes académicos</a>
+        <a href="#respaldo">Por qué confiar</a>
       </div>
     </div>
     <div class="footer__bottom">
@@ -1590,6 +1679,7 @@ strong{font-family:var(--f-strong);font-weight:700}
         scrolled: false,
         progress: 0,
         diaHover: 0,
+        diaSel: 0,
         dias: [
           { num:1, titulo:'El poder del dinero' },
           { num:2, titulo:'Fundamos la ciudad' },
@@ -1608,6 +1698,14 @@ strong{font-family:var(--f-strong);font-weight:700}
           if(d.length) return 'Día '+d[0].num+' · '+d[0].titulo;
         }
         return 'Pasa el cursor sobre cada edificio · 5 días, una economía completa';
+      },
+      diaSelLabel: function(){
+        if(this.diaSel){
+          var self=this;
+          var d=this.dias.filter(function(x){ return x.num===self.diaSel; });
+          if(d.length) return 'Día '+d[0].num+' · '+d[0].titulo;
+        }
+        return '';
       }
     },
 
